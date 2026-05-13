@@ -1102,23 +1102,19 @@ function closePopup(){
 }
 
 function playVideoSound(){
+/* PLAY VIDEO */
 
- let v=
- document.getElementById(
- "ownerVideo"
- );
+let v =
+document.getElementById(
+"ownerVideo"
+);
 
- // UNMUTE
- v.muted=false;
+v.muted = false;
 
- // FULL VOLUME
- v.volume=1;
+v.volume = 1;
 
- // PLAY
- v.play();
-
- }
-
+v.play();
+ 
  // AUTO LOGOUT
 window.addEventListener(
 "beforeunload",
