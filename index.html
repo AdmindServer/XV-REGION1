@@ -522,9 +522,9 @@ SYSTEM ACCESS
 
 <div class="video-banner">
 
-<video id="ownerVideo"
+<video
+id="ownerVideo"
 autoplay
-muted
 loop
 playsinline>
 
@@ -831,8 +831,25 @@ document
 .innerHTML =
 '<img src="Owner.jpg" class="owner-avatar">';
 
-  }
+  /* PLAY VIDEO */
 
+setTimeout(()=>{
+
+ let v =
+ document.getElementById(
+ "ownerVideo"
+ );
+
+ v.muted = false;
+
+ v.volume = 1;
+
+ v.play();
+
+},500);
+
+ }
+  
 // TAB
 function setTab(tab){
 
