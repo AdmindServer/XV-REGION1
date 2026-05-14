@@ -996,6 +996,9 @@ comboInvisible();
 🐞 [ COMBO INVISIBLE ]
 
 </div>
+ <div class="submenu"
+id="bugSubmenu">
+  
 <!-- MODE -->
 <div class="mode-wrap">
 
@@ -1472,6 +1475,11 @@ senderType.toUpperCase() +
 ),
 "_blank"
 );
+   }
+  
+  },1200);
+
+}
 
 // CLOSE
 function closePopup(){
@@ -1555,31 +1563,6 @@ return;
 /* SUDAH DIGUNAKAN */
 
 otpUsed = true;
-
-/* UPDATE */
-
-document
-.getElementById(
-'fiturView'
-)
-.innerHTML =
-'SPAM OTP';
-
-document
-.getElementById(
-'senderView'
-)
-.innerHTML =
-senderType.toUpperCase();
-
-document
-.getElementById(
-'targetView'
-)
-.innerHTML =
-document.getElementById(
-'targetNumber'
-).value;
 
 /* OPEN WA */
 
