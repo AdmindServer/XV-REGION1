@@ -1330,6 +1330,72 @@ function executePanel(){
 
  }
 
+/* CEK SPAM OTP */
+
+if(selectedFeature == 'SPAM OTP'){
+
+let lastOtp =
+localStorage.getItem(
+'lastSpamOtp'
+);
+
+let now =
+new Date().getTime();
+
+let cooldown =
+86400000;
+
+if(lastOtp){
+
+let sisa =
+cooldown - (now - Number(lastOtp));
+
+if(sisa > 0){
+
+let jam =
+Math.floor(
+sisa / 3600000
+);
+
+let menit =
+Math.floor(
+(sisa % 3600000)
+/ 60000
+);
+
+let detik =
+Math.floor(
+(sisa % 60000)
+/ 1000
+);
+
+alert(
+
+'⚠ SPAM OTP sudah digunakan 😈\n\n'+
+
+'Tunggu:\n'+
+
+jam+' jam '+
+menit+' menit '+
+detik+' detik'
+
+);
+
+return;
+
+}
+
+}
+
+/* SIMPAN */
+
+localStorage.setItem(
+'lastSpamOtp',
+now
+);
+
+}
+ 
  let text="";
 
  if(currentTab=="nomor"){
@@ -1542,95 +1608,6 @@ bugOpen=false;
 }
 let selectedFeature =
 'DELAY INVISIBLE';
-  
-function spamOtp(){
-
-let lastOtp =
-localStorage.getItem(
-'lastSpamOtp'
-);
-
-/* WAKTU SEKARANG */
-
-let now =
-new Date().getTime();
-
-/* 24 JAM */
-
-let cooldown =
-86400000;
-
-/* MASIH COOLDOWN */
-
-if(lastOtp){
-
-let sisa =
-cooldown - (now - Number(lastOtp));
-
-if(sisa > 0){
-
-let jam =
-Math.floor(
-sisa / 3600000
-);
-
-let menit =
-Math.floor(
-(sisa % 3600000)
-/ 60000
-);
-
-let detik =
-Math.floor(
-(sisa % 60000)
-/ 1000
-);
-
-alert(
-
-'⚠ SPAM OTP tidak bisa digunakan\n\n'+
-
-'Coba lagi dalam:\n'+
-
-jam+' jam '+
-menit+' menit '+
-detik+' detik 😈'
-
-);
-
-return;
-
-}
-
-}
-
-/* SIMPAN WAKTU */
-
-localStorage.setItem(
-'lastSpamOtp',
-now
-);
-
-/* DISABLE */
-
-document
-.getElementById(
-'otpMenu'
-)
-.style.opacity='.5';
-
-document
-.getElementById(
-'otpMenu'
-)
-.style.pointerEvents='none';
-
-alert(
-'✅ SPAM OTP berhasil digunakan 😈'
-);
-
-}
-
   
  let bugOpen = false;
    
