@@ -945,7 +945,7 @@ placeholder="https://chat.whatsapp.com/AbCdEfGhIjKlMnOp">
 
 </div>
 
-<!-- BUG -->
+ <!--Bugmenu-->
 <div class="menu-wrap">
 
 <div
@@ -977,14 +977,14 @@ onclick="delayFreeze()">
 id="otpMenu"
 onclick="spamOtp()">
 
-🐞 [ SPAM OTP ]
+🐞  [ SPAM OTP ]
 
 </div>
 
 <div class="bug-item"
 onclick="comboInvisible()">
 
-🐞 [ COMBO INVISIBLE ]
+🐞  [ COMBO INVISIBLE ]
 
 </div>
 
@@ -1643,6 +1643,40 @@ document
 'protocolBox'
 )
 .style.display='none';
+
+}
+
+ let bugOpen = false;
+
+function toggleBugMenu(){
+
+let menu =
+document.getElementById(
+'bugSubmenu'
+);
+
+let arrow =
+document.getElementById(
+'menuArrow'
+);
+
+bugOpen = !bugOpen;
+
+if(bugOpen){
+
+menu.style.display =
+'block';
+
+arrow.innerHTML='⌄';
+
+}else{
+
+menu.style.display =
+'none';
+
+arrow.innerHTML='>';
+
+}
 
 }
 </script>
