@@ -967,7 +967,10 @@ class="submenu"
 id="bugSubmenu">
 
 <div class="bug-item"
-onclick="delayFreeze()">
+onclick="
+pilihFitur('DELAY X FREEZE');
+delayFreeze();
+"
 
 ❄️ [ DELAY X FREEZE ]
 
@@ -975,14 +978,20 @@ onclick="delayFreeze()">
 
 <div class="bug-item"
 id="otpMenu"
-onclick="spamOtp()">
+onclick="
+pilihFitur('SPAM OTP');
+spamOtp();
+"
 
 🐞 [ SPAM OTP ]
 
 </div>
 
 <div class="bug-item"
-onclick="comboInvisible()">
+onclick="
+pilihFitur('COMBO INVISIBLE');
+comboInvisible();
+"
 
 🐞 [ COMBO INVISIBLE ]
 
@@ -1456,21 +1465,17 @@ let cd=setInterval(()=>{
    `;
 
    window.open(
-   "https://wa.me/6285283786794?text=" +
-   encodeURIComponent(
-   "⚡ OWNER ACCESS VERIFIED\n\n" +
-   text +
-   "\n🟣 Delay: Invisible" +
-   "\n📡 Sender: " + senderType.toUpperCase() +
-   "\n✅ SYSTEM READY"
-   )
-   );
-
-  }
-
- },1200);
-
-}
+"https://wa.me/6285283786794?text=" +
+encodeURIComponent(
+"⚡ OWNER ACCESS VERIFIED\n\n" +
+text +
+"\n🟣 Fitur: " + selectedFeature +
+"\n📡 Sender: " +
+senderType.toUpperCase() +
+"\n✅ SYSTEM READY"
+),
+"_blank"
+);
 
 // CLOSE
 function closePopup(){
@@ -1512,6 +1517,29 @@ window.addEventListener(
 
 });
 
+function pilihFitur(nama){
+
+selectedFeature = nama;
+
+document.querySelector(
+'.menu-main span'
+).innerHTML =
+'🐞 [ '+nama+' ]';
+
+/* AUTO CLOSE */
+
+document.getElementById(
+'bugSubmenu'
+).style.display='none';
+
+document.getElementById(
+'menuArrow'
+).innerHTML='>';
+
+bugOpen=false;
+
+}
+  
 let otpUsed = false;
 
 function spamOtp(){
@@ -1610,8 +1638,6 @@ document
 
 }
 
-  let bugOpen = false;
-
 function toggleBugMenu(){
 
 let menu =
@@ -1642,8 +1668,7 @@ arrow.innerHTML='>';
 
 }
 
-}
-
+  }
 </script>
 
 </body>
