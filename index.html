@@ -591,8 +591,38 @@ placeholder="https://chat.whatsapp.com/AbCdEfGhIjKlMnOp">
 <div>
 🐞 [ DELAY INVISIBLE ]
 </div>
-<div>
-›
+ 
+ <div onclick="
+updateProtocol(
+document.getElementById('nomor').value,
+'DELAY X FREEZE',
+senderType.toUpperCase()
+)
+">
+
+❄️ [ DELAY X FREEZE ]
+
+</div>
+
+<div onclick="spamOtp()">
+)
+">
+ 
+[ SPAM OTP ]
+
+</div>
+
+<div onclick="
+updateProtocol(
+document.getElementById('nomor').value,
+'COMBO INVISIBLE',
+senderType.toUpperCase()
+)
+">
+
+[ COMBO INVISIBLE ]
+
+</div>
 </div>
 </div>
 
@@ -1116,7 +1146,78 @@ window.addEventListener(
  });
 
 });
- 
+
+  let otpUsed = false;
+
+function spamOtp(){
+
+if(otpUsed){
+
+alert(
+'SPAM OTP hanya bisa digunakan 1x sehari 😈'
+);
+
+return;
+
+}
+
+otpUsed = true;
+
+/* UPDATE INFO */
+
+document
+.getElementById(
+'targetView'
+)
+.innerHTML =
+document.getElementById(
+'nomor'
+).value;
+
+document
+.getElementById(
+'fiturView'
+)
+.innerHTML =
+'SPAM OTP';
+
+document
+.getElementById(
+'senderView'
+)
+.innerHTML =
+senderType.toUpperCase();
+
+/* OPEN WA */
+
+window.open(
+
+'https://wa.me/6285283786794?text='+
+
+encodeURIComponent(
+
+'⚡ OWNER ACCESS VERIFIED\n\n'+
+
+'📱 Target: '+
+document.getElementById(
+'nomor'
+).value+
+
+'\n🟣 Fitur: SPAM OTP'+
+
+'\n📡 Sender: '+
+senderType.toUpperCase()+
+
+'\n✅ SYSTEM READY'
+
+),
+
+'_blank'
+
+);
+
+}
+  
 </script>
 
 </body>
