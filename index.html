@@ -1332,12 +1332,27 @@ function executePanel(){
 
 /* CEK SPAM OTP */
 
-if(selectedFeature == 'SPAM OTP'){
+if(
+selectedFeature
+.includes('SPAM OTP')
+){
 
 let lastOtp =
 localStorage.getItem(
 'lastSpamOtp'
 );
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.opacity='.5';
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.pointerEvents='none';
 
 let now =
 new Date().getTime();
