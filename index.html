@@ -1544,39 +1544,101 @@ let selectedFeature =
 'DELAY INVISIBLE';
    
 let otpUsed = false;
+/* AUTO CEK OTP */
 
+let cekOtp =
+localStorage.getItem(
+'lastSpamOtp'
+);
+
+if(
+cekOtp ==
+new Date().toDateString()
+){
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.opacity='.5';
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.pointerEvents='none';
+
+}
+  
 function spamOtp(){
 
-if(otpUsed){
+let lastOtp =
+localStorage.getItem(
+'lastSpamOtp'
+);
+
+let sekarang =
+new Date();
+
+let hariIni =
+sekarang.toDateString();
+
+/* SUDAH PERNAH HARI INI */
+
+if(lastOtp == hariIni){
+
+let jam =
+localStorage.getItem(
+'lastSpamJam'
+);
 
 alert(
-'SPAM OTP hanya bisa digunakan 1x sehari 😈'
+'SPAM OTP sudah digunakan hari ini 😈\n\nJam: '+jam+'\nTunggu besok untuk menggunakan lagi'
 );
 
 return;
 
 }
 
-/* SUDAH DIGUNAKAN */
+/* SIMPAN TANGGAL */
 
-otpUsed = true;
+localStorage.setItem(
+'lastSpamOtp',
+hariIni
+);
 
-/* DISABLE MENU */
+/* SIMPAN JAM */
+
+let waktu =
+sekarang.toLocaleTimeString(
+'id-ID'
+);
+
+localStorage.setItem(
+'lastSpamJam',
+waktu
+);
+
+/* DISABLE */
 
 document
 .getElementById(
 'otpMenu'
 )
-style.opacity = '.5';
+.style.opacity='.5';
 
 document
 .getElementById(
 'otpMenu'
 )
-style.pointerEvents =
-'none';
+.style.pointerEvents='none';
+
+alert(
+'SPAM OTP berhasil diaktifkan 😈\nJam: '+waktu
+);
 
 }
+  
  let bugOpen = false;
    
  function closeProtocol(){
