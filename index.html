@@ -6,8 +6,94 @@
 <title>Cyber Panel</title>
 
 <style>
-<style>
+.menu-wrap{
 
+margin-top:15px;
+
+}
+
+.menu-main{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:22px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+90deg,
+#2b0000,
+#120000
+);
+
+border:
+1px solid rgba(255,0,0,.2);
+
+font-size:22px;
+color:white;
+
+}
+
+#menuArrow{
+
+font-size:28px;
+
+transition:0.3s;
+
+}
+
+.submenu{
+
+display:none;
+
+margin-top:12px;
+
+animation:
+showMenu .3s ease;
+
+}
+
+.bug-item{
+
+padding:20px;
+
+margin-top:10px;
+
+border-radius:16px;
+
+background:
+rgba(255,0,0,.05);
+
+border:
+1px solid rgba(255,0,0,.12);
+
+font-size:20px;
+
+color:white;
+
+}
+
+@keyframes showMenu{
+
+from{
+
+opacity:0;
+transform:translateY(-10px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+ 
 .bug-item{
 
 display:flex;
@@ -335,18 +421,6 @@ display:none;
 display:block;
 }
 
-/* MENU */
-.menu{
-
-display:flex;
-flex-direction:column;
-
-gap:15px;
-
-margin-top:15px;
-
-}
-
 /* MODE */
 .mode-wrap{
 display:flex;
@@ -648,49 +722,49 @@ placeholder="https://chat.whatsapp.com/AbCdEfGhIjKlMnOp">
 </div>
 
 <!-- BUG -->
-<div class="menu">
+<div class="menu-wrap">
+
+<div class="menu-main"
+onclick="toggleBugMenu()">
+
+<span>
+🐞 [ DELAY INVISIBLE ]
+</span>
+
+<span id="menuArrow">
+>
+</span>
+
+</div>
+
+<div
+class="submenu"
+id="bugSubmenu">
 
 <div class="bug-item"
 onclick="delayFreeze()">
 
-<span>
 ❄️ [ DELAY X FREEZE ]
-</span>
-
-<span class="arrow">
->
-</span>
 
 </div>
 
 <div class="bug-item"
 onclick="spamOtp()">
 
-<span>
-❄️ [ SPAM OTP ]
-</span>
-
-<span class="arrow">
->
-</span>
+📡 [ SPAM OTP ]
 
 </div>
 
 <div class="bug-item"
 onclick="comboInvisible()">
 
-<span>
-❄️ [ COMBO INVISIBLE ]
-</span>
-
-<span class="arrow">
->
-</span>
+⚡ [ COMBO INVISIBLE ]
 
 </div>
 
 </div>
 
+</div>
 <!-- MODE -->
 <div class="mode-wrap">
 
@@ -1211,7 +1285,41 @@ window.addEventListener(
  });
 
 });
- 
+
+let bugOpen = false;
+
+function toggleBugMenu(){
+
+let menu =
+document.getElementById(
+'bugSubmenu'
+);
+
+let arrow =
+document.getElementById(
+'menuArrow'
+);
+
+bugOpen = !bugOpen;
+
+if(bugOpen){
+
+menu.style.display='block';
+
+arrow.style.transform=
+'rotate(90deg)';
+
+}else{
+
+menu.style.display='none';
+
+arrow.style.transform=
+'rotate(0deg)';
+
+}
+
+}
+  
 </script>
 
 </body>
