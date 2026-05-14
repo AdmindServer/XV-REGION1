@@ -970,7 +970,7 @@ id="bugSubmenu">
 onclick="
 pilihFitur('DELAY X FREEZE');
 delayFreeze();
-"
+">
 
 ❄️ [ DELAY X FREEZE ]
 
@@ -981,7 +981,7 @@ id="otpMenu"
 onclick="
 pilihFitur('SPAM OTP');
 spamOtp();
-"
+">
 
 🐞 [ SPAM OTP ]
 
@@ -991,13 +991,9 @@ spamOtp();
 onclick="
 pilihFitur('COMBO INVISIBLE');
 comboInvisible();
-"
+">
 
 🐞 [ COMBO INVISIBLE ]
-
-</div>
-
-</div>
 
 </div>
 <!-- MODE -->
@@ -1539,7 +1535,9 @@ document.getElementById(
 bugOpen=false;
 
 }
-  
+let selectedFeature =
+'DELAY INVISIBLE';
+   
 let otpUsed = false;
 
 function spamOtp(){
@@ -1627,7 +1625,8 @@ style.pointerEvents =
 'none';
 
 }
-
+ let bugOpen = false;
+   
  function closeProtocol(){
 
 document
