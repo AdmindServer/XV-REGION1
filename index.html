@@ -6,6 +6,168 @@
 <title>Cyber Panel</title>
 
 <style>
+.protocol-wrap{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+rgba(0,0,0,.7);
+
+backdrop-filter:blur(8px);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:99999;
+
+animation:
+fadeProtocol .4s ease;
+
+}
+
+.protocol-box{
+
+width:85%;
+
+padding:25px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+#220000,
+#111
+);
+
+border:
+2px solid #ff2a2a;
+
+box-shadow:
+0 0 40px #ff000044;
+
+}
+
+.protocol-title{
+
+font-size:28px;
+font-weight:bold;
+
+color:white;
+
+letter-spacing:3px;
+
+margin-bottom:15px;
+
+}
+
+.protocol-sub{
+
+font-size:20px;
+color:#ccc;
+
+margin-bottom:25px;
+
+}
+
+.protocol-card{
+
+padding:20px;
+
+border-radius:20px;
+
+margin-top:15px;
+
+}
+
+.red{
+
+background:
+rgba(255,0,0,.08);
+
+border:
+1px solid rgba(255,0,0,.2);
+
+}
+
+.gray{
+
+background:
+rgba(255,255,255,.04);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.card-title{
+
+font-size:22px;
+font-weight:bold;
+
+color:white;
+
+}
+
+.card-desc{
+
+font-size:17px;
+color:#aaa;
+
+margin-top:6px;
+
+}
+
+.protocol-btn{
+
+width:100%;
+
+height:70px;
+
+margin-top:25px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+90deg,
+#ff2a2a,
+#ff5555
+);
+
+color:white;
+
+font-size:22px;
+font-weight:bold;
+
+}
+
+@keyframes fadeProtocol{
+
+from{
+
+opacity:0;
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+ 
 .menu-wrap{
 
 margin-top:15px;
@@ -579,6 +741,68 @@ font-size:20px;
 </head>
 <body>
 
+ <!-- SYSTEM PROTOCOL -->
+<div class="protocol-wrap"
+id="protocolBox">
+
+<div class="protocol-box">
+
+<div class="protocol-title">
+
+⚠ SYSTEM PROTOCOL
+
+</div>
+
+<div class="protocol-sub">
+
+Privileged User - Akses penuh
+
+</div>
+
+<div class="protocol-card red">
+
+<div>
+
+<div class="card-title">
+VERIFIKASI
+</div>
+
+<div class="card-desc">
+Pastikan koneksi stabil
+</div>
+
+</div>
+
+</div>
+
+<div class="protocol-card gray">
+
+<div>
+
+<div class="card-title">
+EKSEKUSI
+</div>
+
+<div class="card-desc">
+Proses dalam hitungan detik
+</div>
+
+</div>
+
+</div>
+
+<button
+class="protocol-btn"
+onclick="closeProtocol()">
+
+AKTIFKAN PROTOKOL
+
+</button>
+
+</div>
+
+</div>
+ 
 <!-- COOLDOWN -->
 <div class="cooldown-bar"
 id="cooldownBar">
@@ -1409,7 +1633,16 @@ style.pointerEvents =
 'none';
 
 }
-  
+
+ function closeProtocol(){
+
+document
+.getElementById(
+'protocolBox'
+)
+.style.display='none';
+
+}
 </script>
 
 </body>
