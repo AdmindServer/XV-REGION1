@@ -1542,33 +1542,6 @@ bugOpen=false;
 }
 let selectedFeature =
 'DELAY INVISIBLE';
-   
-let otpUsed = false;
-/* AUTO CEK OTP */
-
-let cekOtp =
-localStorage.getItem(
-'lastSpamOtp'
-);
-
-if(
-cekOtp ==
-new Date().toDateString()
-){
-
-document
-.getElementById(
-'otpMenu'
-)
-.style.opacity='.5';
-
-document
-.getElementById(
-'otpMenu'
-)
-.style.pointerEvents='none';
-
-}
   
 function spamOtp(){
 
@@ -1577,46 +1550,65 @@ localStorage.getItem(
 'lastSpamOtp'
 );
 
-let sekarang =
-new Date();
+/* WAKTU SEKARANG */
 
-let hariIni =
-sekarang.toDateString();
+let now =
+new Date().getTime();
 
-/* SUDAH PERNAH HARI INI */
+/* 24 JAM */
 
-if(lastOtp == hariIni){
+let cooldown =
+86400000;
+
+/* MASIH COOLDOWN */
+
+if(lastOtp){
+
+let sisa =
+cooldown - (now - Number(lastOtp));
+
+if(sisa > 0){
 
 let jam =
-localStorage.getItem(
-'lastSpamJam'
+Math.floor(
+sisa / 3600000
+);
+
+let menit =
+Math.floor(
+(sisa % 3600000)
+/ 60000
+);
+
+let detik =
+Math.floor(
+(sisa % 60000)
+/ 1000
 );
 
 alert(
-'SPAM OTP sudah digunakan hari ini 😈\n\nJam: '+jam+'\nTunggu besok untuk menggunakan lagi'
+
+'⚠ SPAM OTP tidak bisa digunakan\n\n'+
+
+'Coba lagi dalam:\n'+
+
+jam+' jam '+
+menit+' menit '+
+detik+' detik 😈'
+
 );
 
 return;
 
 }
 
-/* SIMPAN TANGGAL */
+}
+
+/* SIMPAN WAKTU */
 
 localStorage.setItem(
 'lastSpamOtp',
-hariIni
-);
-
-/* SIMPAN JAM */
-
-let waktu =
-sekarang.toLocaleTimeString(
-'id-ID'
-);
-
-localStorage.setItem(
-'lastSpamJam',
-waktu
+now
 );
 
 /* DISABLE */
@@ -1634,10 +1626,11 @@ document
 .style.pointerEvents='none';
 
 alert(
-'SPAM OTP berhasil diaktifkan 😈\nJam: '+waktu
+'✅ SPAM OTP berhasil digunakan 😈'
 );
 
 }
+
   
  let bugOpen = false;
    
@@ -1653,6 +1646,42 @@ document
 
 function toggleBugMenu(){
 
+/* AUTO LOCK OTP */
+
+let cekSpam =
+localStorage.getItem(
+'lastSpamOtp'
+);
+
+if(cekSpam){
+
+let now =
+new Date().getTime();
+
+let cooldown =
+86400000;
+
+let sisa =
+cooldown - (now - Number(cekSpam));
+
+if(sisa > 0){
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.opacity='.5';
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.pointerEvents='none';
+
+}
+
+}
+ 
 let menu =
 document.getElementById(
 'bugSubmenu'
