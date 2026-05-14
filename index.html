@@ -1512,42 +1512,6 @@ window.addEventListener(
 
 });
 
-let bugOpen = false;
-
-function toggleBugMenu(){
-
-let menu =
-document.getElementById(
-'bugSubmenu'
-);
-
-let arrow =
-document.getElementById(
-'menuArrow'
-);
-
-bugOpen = !bugOpen;
- 
-if(bugOpen){
-
-menu.style.display='block';
-
-arrow.innerHTML='⌄';
-
-arrow.style.transform=
-'rotate(0deg)';
-
-}else{
-
-menu.style.display='none';
-
-arrow.style.transform=
-'rotate(0deg)';
-
-}
-
-}
-
 let otpUsed = false;
 
 function spamOtp(){
