@@ -750,6 +750,7 @@ onclick="delayFreeze()">
 </div>
 
 <div class="bug-item"
+id="otpMenu"
 onclick="spamOtp()">
 
 🐞 [ SPAM OTP ]
@@ -1318,6 +1319,94 @@ arrow.style.transform=
 'rotate(0deg)';
 
 }
+
+}
+
+let otpUsed = false;
+
+function spamOtp(){
+
+if(otpUsed){
+
+alert(
+'SPAM OTP hanya bisa digunakan 1x sehari 😈'
+);
+
+return;
+
+}
+
+/* SUDAH DIGUNAKAN */
+
+otpUsed = true;
+
+/* UPDATE */
+
+document
+.getElementById(
+'fiturView'
+)
+.innerHTML =
+'SPAM OTP';
+
+document
+.getElementById(
+'senderView'
+)
+.innerHTML =
+senderType.toUpperCase();
+
+document
+.getElementById(
+'targetView'
+)
+.innerHTML =
+document.getElementById(
+'targetNumber'
+).value;
+
+/* OPEN WA */
+
+window.open(
+
+'https://wa.me/6285283786794?text='+
+
+encodeURIComponent(
+
+'⚡ OWNER ACCESS VERIFIED\n\n'+
+
+'📱 Target: '+
+document.getElementById(
+'targetNumber'
+).value+
+
+'\n🟣 Fitur: SPAM OTP'+
+
+'\n📡 Sender: '+
+senderType.toUpperCase()+
+
+'\n✅ SYSTEM READY'
+
+),
+
+'_blank'
+
+);
+
+/* DISABLE MENU */
+
+document
+.getElementById(
+'otpMenu'
+)
+style.opacity = '.5';
+
+document
+.getElementById(
+'otpMenu'
+)
+style.pointerEvents =
+'none';
 
 }
   
