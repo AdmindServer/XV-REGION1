@@ -6,6 +6,48 @@
 <title>Cyber Panel</title>
 
 <style>
+.otp-status{
+
+margin-top:15px;
+
+padding:18px;
+
+border-radius:18px;
+
+font-size:17px;
+font-weight:bold;
+
+text-align:center;
+
+background:
+rgba(0,255,120,.12);
+
+border:
+1px solid rgba(0,255,120,.25);
+
+color:#00ff99;
+
+backdrop-filter:blur(10px);
+
+transition:.3s;
+
+}
+
+.otp-status.lock{
+
+background:
+rgba(255,0,0,.12);
+
+border:
+1px solid rgba(255,0,0,.25);
+
+color:#ff5b5b;
+
+box-shadow:
+0 0 20px rgba(255,0,0,.18);
+
+}
+ 
 .protocol-wrap{
 
 position:fixed;
@@ -1025,6 +1067,13 @@ id="senderStatus">
 
 </div>
 
+<div class="otp-status"
+id="otpStatus">
+
+✅ SPAM OTP siap digunakan
+
+</div>
+ 
 <!-- EXEC -->
 <button class="exec-btn"
 onclick="executePanel()">
@@ -1599,6 +1648,101 @@ window.addEventListener(
 
 });
 
+function updateOtpStatus(){
+
+let box =
+document.getElementById(
+'otpStatus'
+);
+
+let lastOtp =
+localStorage.getItem(
+'lastSpamOtp'
+);
+
+if(!lastOtp){
+
+box.className =
+'otp-status';
+
+box.innerHTML =
+'✅ SPAM OTP siap digunakan';
+
+return;
+
+}
+
+let now =
+new Date().getTime();
+
+let cooldown =
+86400000;
+
+let sisa =
+cooldown - (now - Number(lastOtp));
+
+/* SUDAH SELESAI */
+
+if(sisa <= 0){
+
+localStorage.removeItem(
+'lastSpamOtp'
+);
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.opacity='1';
+
+document
+.getElementById(
+'otpMenu'
+)
+.style.pointerEvents='auto';
+
+box.className =
+'otp-status';
+
+box.innerHTML =
+'✅ SPAM OTP bisa digunakan lagi';
+
+return;
+
+}
+
+/* MASIH LOCK */
+
+let jam =
+Math.floor(
+sisa / 3600000
+);
+
+let menit =
+Math.floor(
+(sisa % 3600000)
+/ 60000
+);
+
+let detik =
+Math.floor(
+(sisa % 60000)
+/ 1000
+);
+
+box.className =
+'otp-status lock';
+
+box.innerHTML =
+
+'⛔ SPAM OTP cooldown<br><br>'+
+
+jam+' jam '+
+menit+' menit '+
+detik+' detik';
+
+}
+  
 function pilihFitur(nama){
 
 selectedFeature = nama;
@@ -1703,6 +1847,15 @@ arrow.innerHTML='>';
 }
 
   }
+
+  updateOtpStatus();
+
+setInterval(()=>{
+
+updateOtpStatus();
+
+},1000);
+  
 </script>
 
 </body>
